@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import DataTable from "./components/DataTable";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [characters, setCharacters] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+  useEffect(() => {
+    const getCharacters = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get("https://rickandmortyapi.com/api/character");
+        setCharacters(response.data.results);
+      } catch (err) {
+        setError("API verisi alınırken bir hata oluştu.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    getCharacters();
+  }, []);
 
-export default App
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+
+  return <DataTable characters={characters} />;
+};
+
+export default App;

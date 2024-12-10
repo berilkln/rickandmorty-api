@@ -7,9 +7,11 @@ const DataTable = ({ characters }) => {
   const [searchWord, setSearchWord] = useState("");
   const [filteredCharacters, setFilteredCharacters] = useState
   (characters);
-  const [characterOrder, setCharacterOrder] = useState("asc");
+  const [orderName, setOrderName] = useState("asc");
+  const [orderOrigin, setOrderOrigin] = useState("asc");
+  const [orderLocation, setOrderLocation] = useState("asc");
 
-  
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -42,14 +44,38 @@ const DataTable = ({ characters }) => {
 
   const SortByName = () => {
     const sorted = [...filteredCharacters].sort((a,b) => {
-      if (characterOrder === "asc"){
+      if (orderName === "asc"){
         return a.name.localeCompare(b.name);
       } else {
         return b.name.localeCompare(a.name);
       }
     });
     setFilteredCharacters(sorted);
-    setCharacterOrder(characterOrder === "asc" ? "desc" : "asc");
+    setOrderName(orderName === "asc" ? "desc" : "asc");
+  };
+
+  const SortByOrigin = () => {
+    const sorted = [...filteredCharacters].sort((a,b) => {
+      if (orderOrigin === "asc"){
+        return a.origin.name.localeCompare(b.origin.name);
+      } else {
+        return b.origin.name.localeCompare(a.origin.name);
+      }
+    });
+    setFilteredCharacters(sorted);
+    setOrderOrigin(orderOrigin === "asc" ? "desc" : "asc");
+  };
+
+  const SortByLocation = () => {
+    const sorted = [...filteredCharacters].sort((a, b) => {
+      if (orderLocation === "asc") {
+        return a.location.name.localeCompare(b.location.name); 
+      } else {
+        return b.location.name.localeCompare(a.location.name); 
+      }
+    });
+    setFilteredCharacters(sorted);
+    setOrderLocation(orderLocation === "asc" ? "desc" : "asc"); 
   };
 
   const displayedCharacters = filteredCharacters.slice(
@@ -73,13 +99,15 @@ const DataTable = ({ characters }) => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell onClick={SortByName} style={{ cursor: "pointer" }}> Character Name {characterOrder === "asc" ? "↑" : "↓"}
+              <TableCell onClick={SortByName} style={{ cursor: "pointer" }}> Character Name {orderName === "asc" ? "↑" : "↓"}
               </TableCell>
               <TableCell>Status</TableCell>
               <TableCell>Species</TableCell>
               <TableCell>Gender</TableCell>
-              <TableCell>Origin</TableCell>
-              <TableCell>Location</TableCell>
+              <TableCell onClick={SortByOrigin} style={{ cursor: "pointer" }}> Origin {orderOrigin === "asc" ? "↑" : "↓"}
+              </TableCell>
+              <TableCell onClick={SortByLocation} style={{ cursor: "pointer" }}> Location {orderLocation === "asc" ? "↑" : "↓"}
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

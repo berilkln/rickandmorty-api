@@ -5,7 +5,10 @@ const DataTable = ({ characters }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [searchWord, setSearchWord] = useState("");
-  const [filteredCharacters, setFilteredCharacters] = useState(characters);
+  const [filteredCharacters, setFilteredCharacters] = useState
+  (characters);
+  const [characterOrder, setCharacterOrder] = useState("asc");
+
   
 
   const handleChangePage = (event, newPage) => {
@@ -37,6 +40,18 @@ const DataTable = ({ characters }) => {
     setPage(0);
   };
 
+  const SortByName = () => {
+    const sorted = [...filteredCharacters].sort((a,b) => {
+      if (characterOrder === "asc"){
+        return a.name.localeCompare(b.name);
+      } else {
+        return b.name.localeCompare(a.name);
+      }
+    });
+    setFilteredCharacters(sorted);
+    setCharacterOrder(characterOrder === "asc" ? "desc" : "asc");
+  };
+
   const displayedCharacters = filteredCharacters.slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage
@@ -58,7 +73,8 @@ const DataTable = ({ characters }) => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Character Name</TableCell>
+              <TableCell onClick={SortByName} style={{ cursor: "pointer" }}> Character Name {characterOrder === "asc" ? "↑" : "↓"}
+              </TableCell>
               <TableCell>Status</TableCell>
               <TableCell>Species</TableCell>
               <TableCell>Gender</TableCell>

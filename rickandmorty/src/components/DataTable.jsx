@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, } from "@mui/material";
+import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, TextField, Button } from "@mui/material";
 
 const DataTable = ({ characters }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [searchWord, setSearchWord] = useState("");
+  const [filteredCharacters, setFilteredCharacters] = useState(characters);
+  
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -14,13 +17,43 @@ const DataTable = ({ characters }) => {
     setPage(0);
   };
 
-  const displayedCharacters = characters.slice(
+
+  const CharacterSearch = () => {
+    if (searchWord.trim() === "") {
+      setFilteredCharacters(characters);
+    } else {
+      const filtered = characters.filter((character) => {
+        return (
+          character.name.toLowerCase().includes(searchWord.toLowerCase()) ||
+          character.status.toLowerCase().includes(searchWord.toLowerCase()) ||
+          character.species.toLowerCase().includes(searchWord.toLowerCase()) ||
+          character.gender.toLowerCase().includes(searchWord.toLowerCase()) ||
+          character.origin.name.toLowerCase().includes(searchWord.toLowerCase()) ||
+          character.location.name.toLowerCase().includes(searchWord.toLowerCase())
+        );
+      });
+      setFilteredCharacters(filtered);
+    }
+    setPage(0);
+  };
+
+  const displayedCharacters = filteredCharacters.slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage
   );
 
   return (
     <Paper>
+      <TextField
+        label="Search"
+        variant="outlined"
+        value={searchWord}
+        onChange={(e) => setSearchWord(e.target.value)}
+      />
+      <Button variant="contained" color="primary" onClick={CharacterSearch}>
+        Search
+      </Button>
+
       <TableContainer>
         <Table>
           <TableHead>
@@ -49,7 +82,7 @@ const DataTable = ({ characters }) => {
       </TableContainer>
       <TablePagination
         component="div"
-        count={characters.length}
+        count={filteredCharacters.length}
         page={page}
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}

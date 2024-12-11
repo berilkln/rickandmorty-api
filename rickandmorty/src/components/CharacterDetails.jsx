@@ -20,7 +20,7 @@ const CharacterDetails = ({ character }) => {
         <Typography variant="body1" ><b>Species:</b> {character.species}</Typography>
         <Typography variant="body1" ><b>Gender:</b> {character.gender}</Typography>
         <Typography variant="body1" ><b>Origin:</b> {character.origin.name}</Typography>
-        <Typography variant="body1" ><b>Location:</b> {character.location.name}</Typography>
+        <Typography variant="body1" ><b>Last known location:</b> {character.location.name}</Typography>
         <Typography variant="body1" ><b>Type:</b> {character.type || 'N/A'}</Typography>
         <Typography variant="body1" ><b>Episode:</b> {character.episode.length}</Typography>
       </CardContent>

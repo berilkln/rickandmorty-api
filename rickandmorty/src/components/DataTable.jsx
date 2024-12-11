@@ -6,8 +6,7 @@ const DataTable = ({ characters }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [searchWord, setSearchWord] = useState("");
-  const [filteredCharacters, setFilteredCharacters] = useState
-  (characters);
+  const [filteredCharacters, setFilteredCharacters] = useState(characters);
   const [orderName, setOrderName] = useState("asc");
   const [orderOrigin, setOrderOrigin] = useState("asc");
   const [orderLocation, setOrderLocation] = useState("asc");
@@ -110,7 +109,7 @@ const DataTable = ({ characters }) => {
               <TableCell>Gender</TableCell>
               <TableCell onClick={SortByOrigin} style={{ cursor: "pointer" }}> Origin {orderOrigin === "asc" ? "↑" : "↓"}
               </TableCell>
-              <TableCell onClick={SortByLocation} style={{ cursor: "pointer" }}> Location {orderLocation === "asc" ? "↑" : "↓"}
+              <TableCell onClick={SortByLocation} style={{ cursor: "pointer" }}> Last Known Location {orderLocation === "asc" ? "↑" : "↓"}
               </TableCell>
             </TableRow>
           </TableHead>

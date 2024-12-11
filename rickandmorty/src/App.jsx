@@ -9,6 +9,7 @@ const App = () => {
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [activeTable, setActiveTable] = useState("");
 
   const getCharacters = async () => {
     try {
@@ -68,11 +69,11 @@ const App = () => {
   }, []);
   
   const handleClickLocation = () => {
-    alert("Location button clicked!");
+    setActiveTable("locations");
   };
 
   const handleClickCharacters = () => {
-    alert("Character button clicked!");
+    setActiveTable("characters");
   };
 
   const handleClickEpisode = () => {
@@ -90,8 +91,8 @@ const App = () => {
         onClickLocation = {handleClickLocation}
         onClickEpisode = {handleClickEpisode}
       />
-      <DataTable characters={characters} />
-      <LocationDataTable locations={locations}/>
+      {activeTable === "characters" && <DataTable characters={characters} />}
+      {activeTable === "locations" && <LocationDataTable locations={locations} />}
     </div>
   );
 };

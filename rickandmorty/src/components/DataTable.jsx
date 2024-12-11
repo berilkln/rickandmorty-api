@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, TextField, Button } from "@mui/material";
+import CharacterDetails from "./CharacterDetails";
 
 const DataTable = ({ characters }) => {
   const [page, setPage] = useState(0);
@@ -10,8 +11,7 @@ const DataTable = ({ characters }) => {
   const [orderName, setOrderName] = useState("asc");
   const [orderOrigin, setOrderOrigin] = useState("asc");
   const [orderLocation, setOrderLocation] = useState("asc");
-
-
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -78,6 +78,10 @@ const DataTable = ({ characters }) => {
     setOrderLocation(orderLocation === "asc" ? "desc" : "asc"); 
   };
 
+  const handleRowClick = (character) => {
+    setSelectedCharacter(character);
+  };
+
   const displayedCharacters = filteredCharacters.slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage
@@ -112,7 +116,7 @@ const DataTable = ({ characters }) => {
           </TableHead>
           <TableBody>
             {displayedCharacters.map((character) => (
-              <TableRow key={character.id}>
+              <TableRow key={character.id} onClick={() => handleRowClick(character)} style={{ cursor: 'pointer' }}>
                 <TableCell>{character.name}</TableCell>
                 <TableCell>{character.status}</TableCell>
                 <TableCell>{character.species}</TableCell>
@@ -132,6 +136,8 @@ const DataTable = ({ characters }) => {
         rowsPerPage={rowsPerPage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
+
+      <CharacterDetails character={selectedCharacter} />
     </Paper>
   );
 };

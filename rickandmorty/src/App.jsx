@@ -4,6 +4,8 @@ import DataTable from "./components/DataTable";
 import AppBarHeader from "./components/AppBarHeader";
 import LocationDataTable from "./components/LocationDataTable";
 import EpisodeDataTable from "./components/EpisodeDataTable";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import HomePage from "./components/HomePage";
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
@@ -129,16 +131,23 @@ const App = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
-      <AppBarHeader 
-        onClickCharacters = {handleClickCharacters}
-        onClickLocation = {handleClickLocation}
-        onClickEpisode = {handleClickEpisode}
-      />
-      {activeTable === "characters" && <DataTable characters={characters} />}
-      {activeTable === "locations" && <LocationDataTable locations={locations} />}
-      {activeTable === "episodes" && <EpisodeDataTable episodes={episodes} />}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={
+          <div>
+            <AppBarHeader 
+              onClickCharacters={handleClickCharacters}
+              onClickLocation={handleClickLocation}
+              onClickEpisode={handleClickEpisode}
+            />
+            {activeTable === "characters" && <DataTable characters={characters} />}
+            {activeTable === "locations" && <LocationDataTable locations={locations} />}
+            {activeTable === "episodes" && <EpisodeDataTable episodes={episodes} />}
+          </div>
+        } />
+      </Routes>
+    </Router>
   );
 };
 

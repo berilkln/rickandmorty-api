@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, TextField, Button } from "@mui/material";
+import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, TextField, Button, Box } from "@mui/material";
 import CharacterDetails from "./CharacterDetails";
 
 const DataTable = ({ characters }) => {
@@ -88,16 +88,18 @@ const DataTable = ({ characters }) => {
 
   return (
     <Paper>
-      <TextField
-        label="Search"
-        variant="outlined"
-        value={searchWord}
-        onChange={(e) => setSearchWord(e.target.value)}
-      />
-      <Button variant="contained" color="primary" onClick={CharacterSearch}>
-        Search
-      </Button>
-
+      <Box sx={{ padding: 2, display: "flex", gap: 2, alignItems: "center" }}>
+        <TextField
+          label="Search Character"
+          variant="outlined"
+          value={searchWord}
+          onChange={(e) => setSearchWord(e.target.value)}
+          fullWidth
+        />
+        <Button variant="contained" color="primary" onClick={CharacterSearch}>
+          Search
+        </Button>
+      </Box>
       <TableContainer>
         <Table>
           <TableHead>

@@ -11,7 +11,7 @@ const App = () => {
   const [episodes, setEpisodes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [activeTable, setActiveTable] = useState("");
+  const [activeTable, setActiveTable] = useState(() => localStorage.getItem("activeTable") || "characters");
 
   const getCharacters = async () => {
     try {
@@ -92,21 +92,35 @@ const App = () => {
 
 
   useEffect(() => {
-    getCharacters();
-    getLocations();
-    getEpisodes();
-  }, []);
+    switch (activeTable) {
+      case "characters":
+        getCharacters();
+        break;
+      case "locations":
+        getLocations();
+        break;
+      case "episodes":
+        getEpisodes();
+        break;
+      default:
+        break;
+    }
+  }, [activeTable]);
   
-  const handleClickLocation = () => {
-    setActiveTable("locations");
-  };
-
+  
   const handleClickCharacters = () => {
     setActiveTable("characters");
+    localStorage.setItem("activeTable", "characters");
+  };
+
+  const handleClickLocation = () => {
+    setActiveTable("locations");
+    localStorage.setItem("activeTable", "locations");
   };
 
   const handleClickEpisode = () => {
     setActiveTable("episodes");
+    localStorage.setItem("activeTable", "episodes");
     
   };
 

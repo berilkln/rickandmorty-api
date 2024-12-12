@@ -5,14 +5,14 @@ const CharacterDetails = ({ character }) => {
   if (!character) return null;
 
   return (
-    <Card sx={{ display: "flex", marginTop: 2 }}>
+    <Card sx={{ display: "flex", padding: 3}}>
       <CardMedia
         component="img"
         image={character.image}
         alt={character.name}
-        sx={{ width: 300, height: 300, objectFit: 'cover' }}
+        sx={{ width: 300, height: 300, objectFit: 'cover', marginLeft: 5}}
       />
-      <CardContent sx={{ flex: 1 }}>
+      <CardContent sx={{ flex: 1, marginLeft: 3 }}>
         <Typography variant="h4">{character.name}</Typography>
         <Typography variant="body1" ><b>Status:</b> {character.status}</Typography>
         <Typography variant="body1" ><b>Species:</b> {character.species}</Typography>

@@ -3,19 +3,19 @@ import {AppBar, Toolbar, Typography, Button, Box} from "@mui/material"
 
 const AppBarHeader = ({ onClickCharacters, onClickLocation, onClickEpisode, }) => {
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="static" sx={{ bgcolor: "primary.dark" }}>
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "secondary.main" }}>
           Rick and Morty Universe
         </Typography>
         <Box>
-        <Button color="inherit" onClick={onClickCharacters}>
+        <Button color="secondary" onClick={onClickCharacters}>
           Character
         </Button>
-        <Button color="inherit" onClick={onClickLocation}>
+        <Button color="secondary" onClick={onClickLocation}>
           Location
         </Button>
-        <Button color="inherit" onClick={onClickEpisode}>
+        <Button color="secondary" onClick={onClickEpisode}>
           Episode
         </Button>
         </Box>

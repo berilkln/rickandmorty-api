@@ -3,26 +3,14 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-        main: '#4f67a4',
-        light: '#e6e9f2',
-        dark: '#072360',
+        main: '#67a6cc',
+        light: '#e2eff5',
+        dark: '#043d6e',
     },
     secondary: {
-        main: '#0fff18',
-        light: '#e6e9f2',
-        dark: '#072360',
-    },
-
-    error: {
-        main: '#6ad619',
-        light: '#e6e9f2',
-        dark: '#072360',
-    },
-
-    warning: {
-        main: '#6ad619',
-        light: '#e6e9f2',
-        dark: '#072360',
+        main: '#89e23b',
+        light: '#f0fce6',
+        dark: '#007f00',
     },
 
     info: {
@@ -60,7 +48,7 @@ const theme = createTheme({
         fontWeight: 600,
     },
     body1: {
-        fontSize: '1rem',
+        fontSize: '1.1rem',
       
     },
   },
@@ -72,6 +60,10 @@ const theme = createTheme({
           fontWeight: "bold",
           fontSize: "1.2rem",
         },
+        body: {
+          fontSize: "1rem",
+          },
+
       },
     },
   },

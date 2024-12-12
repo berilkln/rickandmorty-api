@@ -96,7 +96,7 @@ const DataTable = ({ characters }) => {
           onChange={(e) => setSearchWord(e.target.value)}
           fullWidth
         />
-        <Button variant="contained" color="primary" onClick={CharacterSearch}>
+        <Button variant="contained" onClick={CharacterSearch}>
           Search
         </Button>
       </Box>

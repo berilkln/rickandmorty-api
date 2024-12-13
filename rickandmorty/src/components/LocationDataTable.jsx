@@ -92,7 +92,14 @@ const LocationDataTable = ({ locations }) => {
           </TableHead>
           <TableBody>
             {displayedLocations.map((location) => (
-              <TableRow key={location.id}>
+              <TableRow 
+              key={location.id}
+              sx={{
+                '&:hover': {
+                  backgroundColor: 'primary.light', 
+                },
+              }}
+              >
                 <TableCell>{location.name}</TableCell>
                 <TableCell>{location.type}</TableCell>
                 <TableCell>{location.dimension}</TableCell>

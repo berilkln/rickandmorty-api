@@ -117,7 +117,16 @@ const DataTable = ({ characters }) => {
           </TableHead>
           <TableBody>
             {displayedCharacters.map((character) => (
-              <TableRow key={character.id} onClick={() => handleRowClick(character)} style={{ cursor: 'pointer' }}>
+              <TableRow 
+              key={character.id} 
+              onClick={() => handleRowClick(character)} 
+              sx={{
+                cursor: 'pointer',
+                '&:hover': {
+                  backgroundColor: 'primary.light', 
+                },
+              }}
+              >
                 <TableCell>{character.name}</TableCell>
                 <TableCell>{character.status}</TableCell>
                 <TableCell>{character.species}</TableCell>

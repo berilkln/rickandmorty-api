@@ -92,7 +92,14 @@ const EpisodeDataTable = ({ episodes }) => {
           </TableHead>
           <TableBody>
             {displayedEpisodes.map((episode) => (
-              <TableRow key={episode.id}>
+              <TableRow 
+              key={episode.id}
+              sx={{
+                '&:hover': {
+                  backgroundColor: 'primary.light', 
+                },
+              }}
+              >
                 <TableCell>{episode.name}</TableCell>
                 <TableCell>{episode.episode}</TableCell>
                 <TableCell>{episode.air_date}</TableCell>

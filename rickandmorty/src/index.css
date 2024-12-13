@@ -6,3 +6,10 @@ html, body {
     width: 100%;
 }
   
+@font-face {
+    font-family: 'GetSchwifty';
+    src: url('./src/assets/fonts/get_schwifty.ttf') format('truetype');
+}
+  
+
+  

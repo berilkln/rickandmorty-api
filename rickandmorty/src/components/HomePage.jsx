@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Typography, Box } from '@mui/material';
-import rickAndMortyIcon from '../assets/rick-and-morty-icon.png';
+import rickAndMortyIcon from '../assets/image/rick-and-morty-icon.png';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -33,11 +33,7 @@ const HomePage = () => {
         }}
       />
       
-      <Typography variant="h3">Rick and Morty Universe</Typography>
-      <Typography variant="h6" sx={{ mb: 2 }}>
-        Click to start explore
-      </Typography>
-      
+      <Typography variant="h3" sx={{ fontFamily: 'GetSchwifty, sans-serif', fontSize: "4rem", mb: 5 }}>Rick and Morty Universe</Typography>
       <Button variant="contained" color="secondary" onClick={handleNavigateToHome}>
         Explore
       </Button>

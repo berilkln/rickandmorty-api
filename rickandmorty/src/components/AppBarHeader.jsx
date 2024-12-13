@@ -16,7 +16,7 @@ const AppBarHeader = ({ onClickCharacters, onClickLocation, onClickEpisode, }) =
         variant="h6" 
         component="div" 
         onClick={handleNavigateHome}
-        sx={{ flexGrow: 1, color: "secondary.main", cursor: "pointer", }}
+        sx={{ flexGrow: 1, color: "secondary.main", cursor: "pointer", fontFamily: 'GetSchwifty, sans-serif' }}
         >
           Rick and Morty Universe
         </Typography>

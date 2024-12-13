@@ -1,0 +1,8 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #043e6d; /* Sayfanın arka plan rengi */
+    min-height: 100%;
+    width: 100%;
+}
+  

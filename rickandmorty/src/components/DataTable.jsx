@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, TextField, Button, Box } from "@mui/material";
+import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, TextField, Button, Box, Checkbox, ListItemText, MenuItem, Select, FormControl, InputLabel } from "@mui/material";
 import CharacterDetails from "./CharacterDetails";
 
 const DataTable = ({ characters }) => {
@@ -11,6 +11,11 @@ const DataTable = ({ characters }) => {
   const [orderOrigin, setOrderOrigin] = useState("asc");
   const [orderLocation, setOrderLocation] = useState("asc");
   const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [selectedStatus, setSelectedStatus] = useState([]);
+  const [selectedGender, setSelectedGender] = useState([]);
+  const [selectedSpecies, setSelectedSpecies] = useState([]);
+
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -22,11 +27,30 @@ const DataTable = ({ characters }) => {
   };
 
 
-  const CharacterSearch = () => {
-    if (searchWord.trim() === "") {
-      setFilteredCharacters(characters);
-    } else {
-      const filtered = characters.filter((character) => {
+
+  const applyFilters = () => {
+    let filtered = characters;
+
+    if (selectedStatus.length > 0) {
+      filtered = filtered.filter((character) =>
+        selectedStatus.includes(character.status)
+      );
+    }
+    
+    if (selectedGender.length > 0) {
+      filtered = filtered.filter((character) =>
+        selectedGender.includes(character.gender)
+      );
+    }
+    
+    if (selectedSpecies.length > 0) {
+      filtered = filtered.filter((character) =>
+        selectedSpecies.includes(character.species)
+      );
+    }
+
+    if (searchWord.trim() !== "") {
+      filtered = filtered.filter((character) => {
         return (
           character.name.toLowerCase().includes(searchWord.toLowerCase()) ||
           character.status.toLowerCase().includes(searchWord.toLowerCase()) ||
@@ -36,10 +60,21 @@ const DataTable = ({ characters }) => {
           character.location.name.toLowerCase().includes(searchWord.toLowerCase())
         );
       });
-      setFilteredCharacters(filtered);
     }
+
+    setFilteredCharacters(filtered);
     setPage(0);
   };
+
+
+  const handleSelectChange = (setter) => (event) => {
+    const {
+      target: { value },
+    } = event;
+    setter(typeof value === "string" ? value.split(",") : value);
+  };
+
+
 
   const SortByName = () => {
     const sorted = [...filteredCharacters].sort((a,b) => {
@@ -96,9 +131,79 @@ const DataTable = ({ characters }) => {
           onChange={(e) => setSearchWord(e.target.value)}
           fullWidth
         />
-        <Button variant="contained" onClick={CharacterSearch}>
-          Search
+        <Button variant="contained" onClick={applyFilters}>
+          Apply Filter
         </Button>
+      </Box>
+      <Box sx={{ padding: 2, display: "flex", gap: 2, alignItems: "center" }}>
+        <FormControl sx={{ minWidth: 400, marginRight: 2 }}>
+          <InputLabel>Status</InputLabel>
+          <Select
+          multiple
+          value={selectedStatus}
+          onChange={handleSelectChange(setSelectedStatus)}
+          renderValue={(selected) => selected.join(", ")}
+          fullWidth
+          sx={{ minWidth: 150 }}
+        >
+          <MenuItem value="Alive">
+            <Checkbox checked={selectedStatus.indexOf("Alive") > -1} />
+            <ListItemText primary="Alive" />
+          </MenuItem>
+          <MenuItem value="Dead">
+            <Checkbox checked={selectedStatus.indexOf("Dead") > -1} />
+            <ListItemText primary="Dead" />
+          </MenuItem>
+          <MenuItem value="Unknown">
+            <Checkbox checked={selectedStatus.indexOf("unknown") > -1} />
+            <ListItemText primary="unknown" />
+          </MenuItem>
+        </Select>
+        </FormControl>
+        <FormControl sx={{ minWidth: 400, marginRight: 2 }}>
+          <InputLabel>Gender</InputLabel>
+          <Select
+          multiple
+          value={selectedGender}
+          onChange={handleSelectChange(setSelectedGender)}
+          renderValue={(selected) => selected.join(", ")}
+        >
+          <MenuItem value="Male">
+            <Checkbox checked={selectedGender.indexOf("Male") > -1} />
+            <ListItemText primary="Male" />
+          </MenuItem>
+          <MenuItem value="Female">
+            <Checkbox checked={selectedGender.indexOf("Female") > -1} />
+            <ListItemText primary="Female" />
+          </MenuItem>
+          <MenuItem value="Unknown">
+            <Checkbox checked={selectedGender.indexOf("Unknown") > -1} />
+            <ListItemText primary="Unknown" />
+          </MenuItem>
+        </Select>
+        </FormControl>
+        <FormControl sx={{ minWidth: 400 }}>
+          <InputLabel>Species</InputLabel>
+          <Select
+          multiple
+          value={selectedSpecies}
+          onChange={handleSelectChange(setSelectedSpecies)}
+          renderValue={(selected) => selected.join(", ")}
+        >
+          <MenuItem value="Human">
+            <Checkbox checked={selectedSpecies.indexOf("Human") > -1} />
+            <ListItemText primary="Human" />
+          </MenuItem>
+          <MenuItem value="Alien">
+            <Checkbox checked={selectedSpecies.indexOf("Alien") > -1} />
+            <ListItemText primary="Alien" />
+          </MenuItem>
+          <MenuItem value="Unknown">
+            <Checkbox checked={selectedSpecies.indexOf("Unknown") > -1} />
+            <ListItemText primary="Unknown" />
+          </MenuItem>
+        </Select>
+        </FormControl>
       </Box>
       <TableContainer>
         <Table>

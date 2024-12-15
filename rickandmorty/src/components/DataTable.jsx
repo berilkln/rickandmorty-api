@@ -154,7 +154,7 @@ const DataTable = ({ characters }) => {
             <Checkbox checked={selectedStatus.indexOf("Dead") > -1} />
             <ListItemText primary="Dead" />
           </MenuItem>
-          <MenuItem value="Unknown">
+          <MenuItem value="unknown">
             <Checkbox checked={selectedStatus.indexOf("unknown") > -1} />
             <ListItemText primary="unknown" />
           </MenuItem>
@@ -176,9 +176,9 @@ const DataTable = ({ characters }) => {
             <Checkbox checked={selectedGender.indexOf("Female") > -1} />
             <ListItemText primary="Female" />
           </MenuItem>
-          <MenuItem value="Unknown">
-            <Checkbox checked={selectedGender.indexOf("Unknown") > -1} />
-            <ListItemText primary="Unknown" />
+          <MenuItem value="unknown">
+            <Checkbox checked={selectedGender.indexOf("unknown") > -1} />
+            <ListItemText primary="unknown" />
           </MenuItem>
         </Select>
         </FormControl>
@@ -198,9 +198,9 @@ const DataTable = ({ characters }) => {
             <Checkbox checked={selectedSpecies.indexOf("Alien") > -1} />
             <ListItemText primary="Alien" />
           </MenuItem>
-          <MenuItem value="Unknown">
-            <Checkbox checked={selectedSpecies.indexOf("Unknown") > -1} />
-            <ListItemText primary="Unknown" />
+          <MenuItem value="unknown">
+            <Checkbox checked={selectedSpecies.indexOf("unknown") > -1} />
+            <ListItemText primary="unknown" />
           </MenuItem>
         </Select>
         </FormControl>

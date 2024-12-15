@@ -61,7 +61,7 @@ src/
 
 1. Clone the Repository
 ```
-git clone https://github.com/username/rickandmorty-api.git
+git clone https://github.com/berilkln/rickandmorty-api.git
 cd rickandmorty
 ```
 3. Install Dependencies

@@ -131,7 +131,7 @@ const DataTable = ({ characters }) => {
           onChange={(e) => setSearchWord(e.target.value)}
           fullWidth
         />
-        <Button variant="contained" onClick={applyFilters}>
+        <Button color="warning" variant="contained" onClick={applyFilters}>
           Apply Filter
         </Button>
       </Box>

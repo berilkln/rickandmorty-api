@@ -73,7 +73,7 @@ const EpisodeDataTable = ({ episodes }) => {
           onChange={(e) => setSearchWord(e.target.value)}
           fullWidth
         />
-        <Button variant="contained" color="primary" onClick={EpisodeSearch}>
+        <Button variant="contained" color="warning" onClick={EpisodeSearch}>
           Search
         </Button>
       </Box>

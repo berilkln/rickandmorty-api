@@ -73,7 +73,7 @@ const LocationDataTable = ({ locations }) => {
           onChange={(e) => setSearchWord(e.target.value)}
           fullWidth
         />
-        <Button variant="contained" color="primary" onClick={LocationSearch}>
+        <Button variant="contained" color="warning" onClick={LocationSearch}>
           Search
         </Button>
       </Box>

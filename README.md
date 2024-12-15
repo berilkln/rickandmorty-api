@@ -61,8 +61,8 @@ src/
 
 1. Clone the Repository
 ```
-git clone https://github.com/username/rick-and-morty-explorer.git
-cd rick-and-morty-explorer
+git clone https://github.com/username/rickandmorty-api.git
+cd rickandmorty
 ```
 3. Install Dependencies
 ```
@@ -84,7 +84,6 @@ Open http://localhost:5173 in your browser to view the app.
 ## 🚧 Development Notes
 
 - A Welcome Screen is displayed upon the first load, followed by navigation to other screens.
-- Material UI's useTheme hook is used to toggle between light and dark modes.
 - Thanks to Vite, the app is optimized for speed and smooth development.
 - User-friendly error messages are displayed in case of any API errors.
 
@@ -95,9 +94,9 @@ Open http://localhost:5173 in your browser to view the app.
 This project was built using the following resources:
 
 [Rick and Morty API](https://rickandmortyapi.com/)  
-[React Router Documentation](https://rickandmortyapi.com/)  
-[Styled Components Documentation](https://rickandmortyapi.com/)  
+[React Documentation](https://react.dev)  
 [Material UI ](https://mui.com/)  
+[React Router Documentation](https://reactrouter.com/home)   
 [Rick and Morty Theme Colors](https://colorswall.com/palette/243091)   
 [Vite Guide](https://vite.dev/guide/)
 

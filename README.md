@@ -65,11 +65,11 @@ git clone https://github.com/berilkln/rickandmorty-api.git
 cd rickandmorty-api
 cd rickandmorty
 ```
-3. Install Dependencies
+2. Install Dependencies
 ```
 npm install
 ```
-5. Run the Development Server
+3. Run the Development Server
 ```
 npm run dev
 ```

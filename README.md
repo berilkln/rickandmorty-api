@@ -77,8 +77,19 @@ Open http://localhost:5173 in your browser to view the app.
 ## 📸 Screenshots
 
 ### Welcome Screen
-### Location Table
-### Episode Table   
+![Home Page](screenshots/img-homepage.png)
+### Characters Table   
+![Characters Table](screenshots/img-character-table.png)
+### Locations Table
+![Locations Table](screenshots/img-location-table.png)
+### Episodes Table   
+![Episodes Table](screenshots/img-episodes-table.png)
+### Character Details   
+![Character Details](screenshots/img-character-details.png)
+### Character Filter   
+![Character Filter](screenshots/img-character-filter.png)
+
+
 
 
 ## 🚧 Development Notes
